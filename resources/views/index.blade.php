@@ -40,10 +40,10 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">Home</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
 
           
-              <a class="nav-link js-scroll-trigger" href="#">Docs<b class="caret"></b></a>
+              <a class="nav-link js-scroll-trigger" href="#">Docs<b class="caret"></b></a> -->
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('/dashboard/login')}}">Login</a>

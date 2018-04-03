@@ -1,3 +1,8 @@
+@if(!Session::has('email'))
+  <script type="text/javascript">
+      window.location = "/dashboard/login";//here double curly bracket
+  </script>
+@endif
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +33,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="{{URL::asset('/dashboard/')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -41,10 +46,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="alldomains.php">All Domains</a>
+              <a href="{{URL::asset('/dashboard/alldomains')}}">All Domains</a>
             </li>
             <li>
-              <a href="adddomain.php">Add Domain</a>
+              <a href="{{URL::asset('/dashboard/adddomain')}}">Add Domain</a>
             </li>
             
           </ul>
@@ -56,13 +61,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="getapi.php">Get API</a>
+              <a href="{{URL::asset('/dashboard/getapi')}}">Get API</a>
             </li>
             <li>
-              <a href="usermanual.php">User Manual</a>
+              <a href="{{URL::asset('/dashboard/usermanual')}}">User Manual</a>
             </li>
             <li>
-              <a href="docs.php">Docs</a>
+              <a href="{{URL::asset('/dashboard/docs')}}">Docs</a>
             </li>
           </ul>
         </li>
@@ -73,10 +78,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseMulti">
             <li>
-              <a href="viewprofile.php">View Profile</a>
+              <a href="{{URL::asset('/dashboard/viewprofile')}}">View Profile</a>
             </li>
             <li>
-              <a href="editprofile.php">Edit Profile</a>
+              <a href="{{URL::asset('/dashboard/editprofile')}}">Edit Profile</a>
             </li>
             
           </ul>

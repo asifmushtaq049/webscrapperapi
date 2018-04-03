@@ -67,6 +67,7 @@ Route::get('/dashboard/editprofile', function () {
 });
 
 Route::post('/login-verification', 'loginController@login');
+Route::get('/logout', 'LogoutController@logout');
 
 Route::get('login-success', function () {
     return redirect('/dashboard');
