@@ -8,24 +8,35 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Input;
+use Validator;
+use App\Register;
 use Session;
 use DB;
 
-class loginController extends BaseController
+class registerController extends BaseController
 {
-   public function login(Request $req)
+   public function store()
    {
-        $username=$req->input('gmail');
-        $password=$req->input('password');
+        $data=Input::except(array('_token'));
         
-        $checkLogin=DB::table("user")->where(['email'=>$username,'password'=>$password])->get();
-        if(count($checkLogin) >0)
-        {
-          Session::put("email",$username);
-             return redirect()->to('/dashboard');
-        }else
-        {
-            echo "Login failed.Try again!";
+        $rule=array(
+          'fname' => 'required',
+          'lname' => 'required',
+          'email' => 'required|email',
+          'password' => 'required|min:3',
+          'cpassword' => 'required|same:password'
+        );
+        $message=array(
+          'password.required' => 'At least 6 characters',
+          'cpassword.same' => 'Passwords dont match'
+        );
+        $validator=Validator::make($data,$rule,$message);
+        if ($validator->fails()) {
+          return Redirect::to('/dashboard/register')->withErrors($validator);
+
+        }else{
+          Register::formstore(Input::except(array('_token','cpassword')));
         }
    }
 }

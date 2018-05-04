@@ -10,13 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 
 Route::get('/', function () {
     return view('index');
@@ -67,8 +60,5 @@ Route::get('/dashboard/editprofile', function () {
 });
 
 Route::post('/login-verification', 'loginController@login');
+Route::post('/register-verification', 'registerController@store');
 Route::get('/logout', 'LogoutController@logout');
-
-Route::get('login-success', function () {
-    return redirect('/dashboard');
-});

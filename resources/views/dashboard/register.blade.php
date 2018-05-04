@@ -1,3 +1,4 @@
+
 @include('dashboard.admin_header')
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Register an Account</div>
@@ -7,28 +8,33 @@
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputName">First name</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name" required>
+                <input type="hidden" id="csrf" name="_token" placeholder="" value="{{ csrf_token() }}" >
+                <input class="form-control" id="exampleInputName" name="fname" type="text" aria-describedby="nameHelp" placeholder="Enter first name" required>
+                <!-- @if($errors->has('fname')) <p> {{$errors->first('fname')}} </p> @endif -->
               </div>
               <div class="col-md-6">
                 <label for="exampleInputLastName">Last name</label>
-                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name" required>
+                <input class="form-control" id="exampleInputLastName" name="lname" type="text" aria-describedby="nameHelp" placeholder="Enter last name" required>
+                 <!-- @if($errors->has('lname')) <p> {{$errors->first('lname')}} </p> @endif -->
               </div>
             </div>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+            <input class="form-control" id="exampleInputEmail1" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+             <!-- @if($errors->has('email')) <p> {{$errors->first('email')}} </p> @endif -->
           </div>
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="password1">Password</label>
-                <input class="form-control" id="password" type="password" placeholder="Password"  required>
+                <input class="form-control" id="password" name="password" type="password" placeholder="Password"  required>
+                 <!-- @if($errors->has('password')) <p> {{$errors->first('password')}} </p> @endif -->
               </div>
               <div class="col-md-6">
                 <label for="password2">Confirm password</label>
-                <input class="form-control" id="confirm_password" type="password" placeholder="Confirm password"  required>
-
+                <input class="form-control" name="cpassword" id="confirm_password" type="password" placeholder="Confirm password"  required>
+                 <!-- @if($errors->has('cpassword')) <p> {{$errors->first('cpassword')}} </p> @endif -->
               </div>
               
             </div>
