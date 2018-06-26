@@ -10,14 +10,7 @@
       <div >
       	<form>
       		<div class="">
-	      		<div class="form-group ">
-	      			<label for="domain1"><b>Your Domain*</b></label>
-	      			<select class="form-control col-md-6" id="domain1">
-	      				<option>www.climesoft.com</option>
-	      				<option>www.noorrehman.tk</option>
-	      				<option>www.voa.org</option>
-	      			</select>
-	      		</div>
+	      		
 	      		<div class="form-group">
 	      			<label for="website1"><b>Target Website*</b></label>
 	      			<select class="form-control col-md-6" id="website1">
@@ -50,8 +43,8 @@
 		      		</label>
 		      	</div>
 	      		<div>
-	      			<button class="btn btn-success">Get file</button>
-	      			<button class="btn btn-primary">Get API</button>
+	      			
+	      			<button class="btn btn-primary btn-lg">Get API</button>
 	      		</div>
 	      	</div>
       	</form>

@@ -1,68 +1,78 @@
+@include('dashboard.auth_header')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Register') }}</div>
 
-@include('dashboard.admin_header')
-    <div class="card card-register mx-auto mt-5">
-      <div class="card-header">Register an Account</div>
-      <div class="card-body">
-        <form action="/register-verification" method="post">
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <label for="exampleInputName">First name</label>
-                <input type="hidden" id="csrf" name="_token" placeholder="" value="{{ csrf_token() }}" >
-                <input class="form-control" id="exampleInputName" name="fname" type="text" aria-describedby="nameHelp" placeholder="Enter first name" required>
-                <!-- @if($errors->has('fname')) <p> {{$errors->first('fname')}} </p> @endif -->
-              </div>
-              <div class="col-md-6">
-                <label for="exampleInputLastName">Last name</label>
-                <input class="form-control" id="exampleInputLastName" name="lname" type="text" aria-describedby="nameHelp" placeholder="Enter last name" required>
-                 <!-- @if($errors->has('lname')) <p> {{$errors->first('lname')}} </p> @endif -->
-              </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" type="text" pattern="[a-z][A-Z]" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" title="Name should only contain letters i.e. shah" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                                <br>
+                                <span>Already Have an Account?</span>
+                                <a  href="{{url('/dashboard/login')}}">Login Here</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input class="form-control" id="exampleInputEmail1" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email" required>
-             <!-- @if($errors->has('email')) <p> {{$errors->first('email')}} </p> @endif -->
-          </div>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <label for="password1">Password</label>
-                <input class="form-control" id="password" name="password" type="password" placeholder="Password"  required>
-                 <!-- @if($errors->has('password')) <p> {{$errors->first('password')}} </p> @endif -->
-              </div>
-              <div class="col-md-6">
-                <label for="password2">Confirm password</label>
-                <input class="form-control" name="cpassword" id="confirm_password" type="password" placeholder="Confirm password"  required>
-                 <!-- @if($errors->has('cpassword')) <p> {{$errors->first('cpassword')}} </p> @endif -->
-              </div>
-              
-            </div>
-          </div>
-          <button class="btn btn-primary btn-block">Register</button>
-        </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="{{url('/dashboard/login')}}">Login</a>
-          <a class="d-block small" href="{{url('/dashboard/forgot-password')}}">Forgot Password?</a>
         </div>
-      </div>
     </div>
-  </div>
-  <script type="text/javascript">
-    
-    var password = document.getElementById("password")
-    , confirm_password = document.getElementById("confirm_password");
-
-    function validatePassword(){
-      if(password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Passwords Don't Match");
-      } else {
-        confirm_password.setCustomValidity('');
-      }
-    }
-
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
-
-</script>
-  @include('dashboard.admin_footer')
+</div>
+@include('dashboard.auth_footer')

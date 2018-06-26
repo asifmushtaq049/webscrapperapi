@@ -7,7 +7,7 @@ use Input;
 class Register extends Model
 {
     //
-    protected $table="noor";
+    protected $table="user";
     public static function formstore($data)
     {
     	$fname=Input::get('fname');
@@ -15,8 +15,8 @@ class Register extends Model
     	$email=Input::get('email');
     	$pass=Input::get('password');
     	$users=new Register();
-    	$users->first_name=$fname;
-    	$users->last_name=$lname;
+    	$users->fname=$fname;
+    	$users->lname=$lname;
     	$users->email=$email;
     	$users->password=$pass;
     	$users->save();

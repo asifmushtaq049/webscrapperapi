@@ -16,49 +16,88 @@ Route::get('/', function () {
 });
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->middleware('auth');
 
-Route::get('/dashboard/register',function(){
-    return view('dashboard.register');
-});
+Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm');
 
+Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/dashboard/login', function () {
-    return view('dashboard.login');
-});
+Route::post('/dashboard/login', 'Auth\LoginController@login');
 
-Route::get('/dashboard/forgot-password', function () {
-    return view('dashboard.forgot-password');
-});
+        // Registration Routes...
+Route::get('/dashboard/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('/dashboard/register', 'Auth\RegisterController@register');
+
+        // Password Reset Routes...
+Route::get('/dashboard/password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm')->middleware('auth');
+Route::post('/dashboard/password/email', 'Auth\ResetPasswordController@sendResetLinkEmail')->middleware('auth');
+Route::post('/dashboard/password/reset', 'Auth\ResetPasswordController@reset');
 
 
 Route::get('/dashboard/alldomains', function(){
     return view('dashboard.alldomains');
-});
+})->middleware('auth');
 
 Route::get('/dashboard/adddomain', function () {
     return view('dashboard.adddomain');
-});
+})->middleware('auth');
 
 Route::get('/dashboard/docs', function () {
     return view('dashboard.docs');
-});
+})->middleware('auth');
 
 Route::get('/dashboard/usermanual', function () {
     return view('dashboard.usermanual');
-});
+})->middleware('auth');
 
 Route::get('/dashboard/getapi', function () {
     return view('dashboard.getapi');
-});
+})->middleware('auth');
 Route::get('/dashboard/viewprofile', function () {
     return view('dashboard.viewprofile');
-});
+})->middleware('auth');
 
 Route::get('/dashboard/editprofile', function () {
     return view('dashboard.editprofile');
+})->middleware('auth');
+
+Route::post('/login-verification', 'loginController@login')->middleware('auth');
+Route::post('/register-verification', 'registerController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
+Route::get('verifyEmailFirst','Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+
+Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone')->middleware('auth');
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+Route::get('/dashboard', function () {
+        return view('dashboard.index');
+    })->middleware('auth');
 });
 
-Route::post('/login-verification', 'loginController@login');
-Route::post('/register-verification', 'registerController@store');
-Route::get('/logout', 'LogoutController@logout');
+//      Admin Routes
+Route::get('/admin', function () {
+    return view('admin.admin_index');
+})->middleware('is_admin');
+
+Route::get('/admin/fetch_daraz', function () {
+    return view('admin.fetch_daraz');
+});
+
+Route::get('/admin/fetch_alibaba', function () {
+    return view('admin.fetch_alibaba');
+});
+
+Route::get('/admin/fetch_ebay', function () {
+    return view('admin.fetch_ebay');
+});
+
+Route::get('/admin/delete', function () {
+    return view('admin.delete');
+});
+
+Route::get('/admin/users','FetchDataFromDB@index');

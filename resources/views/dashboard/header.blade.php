@@ -1,8 +1,8 @@
-@if(!Session::has('email'))
+<!-- @if(!Session::has('email'))
   <script type="text/javascript">
       window.location = "/dashboard/login";//here double curly bracket
   </script>
-@endif
+@endif -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +26,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">WEB SCRAPING</a>
+    <a class="navbar-brand" href="{{URL::asset('/')}}">WEB SCRAPING</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,34 +41,17 @@
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-globe"></i>
-            <span class="nav-link-text">Domains</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="{{URL::asset('/dashboard/alldomains')}}">All Domains</a>
-            </li>
-            <li>
-              <a href="{{URL::asset('/dashboard/adddomain')}}">Add Domain</a>
-            </li>
-            
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="API">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-cog"></i>
             <span class="nav-link-text">API</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="{{URL::asset('/dashboard/getapi')}}">Get API</a>
+              <a href="{{URL::asset('/dashboard/getapi')}}">Get Api</a>
             </li>
-            <li>
-              <a href="{{URL::asset('/dashboard/usermanual')}}">User Manual</a>
-            </li>
-            <li>
-              <a href="{{URL::asset('/dashboard/docs')}}">Docs</a>
-            </li>
+            <!-- <li>
+              <a href="{{URL::asset('/dashboard/adddomain')}}">Add Domain</a>
+            </li> -->
+            
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profile">
@@ -86,6 +69,24 @@
             
           </ul>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="API">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-book"></i>
+            <span class="nav-link-text">Docs</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <!-- <li>
+              <a href="{{URL::asset('/dashboard/getapi')}}">Get API</a>
+            </li> -->
+            <li>
+              <a href="{{URL::asset('/dashboard/usermanual')}}">User Manual</a>
+            </li>
+            <li>
+              <a href="{{URL::asset('/dashboard/docs')}}">Documentation</a>
+            </li>
+          </ul>
+        </li>
+        
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -95,9 +96,9 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-envelope"></i>
+           <i class="fa fa-fw fa-envelope"></i>
             <span class="d-lg-none">Messages
               <span class="badge badge-pill badge-primary">12 New</span>
             </span>
@@ -128,8 +129,8 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item small" href="#">View all messages</a>
           </div>
-        </li>
-        <li class="nav-item dropdown">
+        </li> --> 
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-bell"></i>
             <span class="d-lg-none">Alerts
@@ -171,8 +172,8 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item small" href="#">View all alerts</a>
           </div>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <form class="form-inline my-2 my-lg-0 mr-lg-2">
             <div class="input-group">
               <input class="form-control" type="text" placeholder="Search for...">
@@ -183,7 +184,7 @@
               </span>
             </div>
           </form>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
