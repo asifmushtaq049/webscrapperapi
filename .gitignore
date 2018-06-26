@@ -1,14 +1,9 @@
-vendor/
 node_modules/
 npm-debug.log
 
 # Laravel 4 specific
 bootstrap/compiled.php
-app/storage/
 
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
 storage/*.key
 Homestead.yaml
 Homestead.json
@@ -18,8 +13,6 @@ Homestead.json
 
 #Default 
 /node_modules
-/public/hot
-/public/storage
 /storage/*.key
 /.idea
 /.vscode
