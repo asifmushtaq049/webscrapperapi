@@ -17,12 +17,14 @@
 		          <table>
 		          	<tr>
 		          		<td>NAME</td>
+		          		<td>Email</td>
 		          		<td>Status</td>
 		          	</tr>
 		          	 <!-- </div> -->
 		          	@foreach ($users as $user)
 						<tr>
 			          		<td>{{$user->name}}</td>
+			          		<td>{{$user->email}}</td>
 			          		<td>{{$user->status}}</td>
 			          	</tr>
 					@endforeach

@@ -17,6 +17,6 @@ class FetchDataFromDB extends Controller
     public function index(Request $request)
     {
 	    $users = User::all();
-	    return view('fetch_data.users', ['users' => $users]);
+	    return view('admin.users', ['users' => $users]);
     }
 }

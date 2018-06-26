@@ -17,7 +17,7 @@
               </div>
               <div class="mr-5 h5">My Profile</div>
             </div> -->
-            <a  href="{{url('/admin/edit')}}">   link         </a>
+            <a  href="{{url('/admin/users')}}">   link         </a>
           </div>
         </div>
         <!-- <div class="col-xl-3 col-sm-6 mb-3">
