@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="{{URL::asset('/fetch_data/')}}">
+          <a class="nav-link" href="{{URL::asset('/admin/')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -49,10 +49,17 @@
             <li>
               <a href="{{URL::asset('/admin/fetch_ebay')}}">Scrap ebay.pk</a>
             </li>
+
             
           </ul>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="user profile">
+              <a class="nav-link" href="{{URL::asset('/admin/users')}}">
+                <i class="fa fa-fw fa-user"></i>
+                <span class="nav-link-text">User Profle</span>
+              </a>
+            </li>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profile">
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profile">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">User Profile</span>
@@ -66,7 +73,7 @@
             </li>
             
           </ul>
-        </li>
+        </li> -->
       </ul>
       </div>  
         <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="API">

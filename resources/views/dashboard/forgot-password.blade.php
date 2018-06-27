@@ -1,4 +1,4 @@
-@include('dashboard.admin_header');
+@include('dashboard.auth_header');
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Reset Password</div>
       <div class="card-body">
@@ -18,4 +18,4 @@
         </div>
       </div>
     </div>
-    @include('dashboard.admin_footer');
+    @include('dashboard.auth_footer');

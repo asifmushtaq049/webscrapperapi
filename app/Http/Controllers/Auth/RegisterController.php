@@ -66,6 +66,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+
         ]);
     }
 
@@ -108,7 +109,7 @@ class RegisterController extends Controller
        if($user)
        {
              User::Where(['email'=>$email,'verifyToken'=>$verifyToken])->update(['status'=>'1','verifyToken'=>NULL]);
-             return redirect('/dashboard');
+             return redirect('/login');
        }
        else{
         return 'User not found'; 

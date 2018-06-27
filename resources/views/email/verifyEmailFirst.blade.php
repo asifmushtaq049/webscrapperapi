@@ -1,1 +1,1 @@
-<h2> Verify Email To Activate Account. We just have send an email to you</h2>
+ <h2> Verify Email To Activate Account. We just have send an email to you</h2>

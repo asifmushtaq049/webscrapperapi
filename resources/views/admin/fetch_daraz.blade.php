@@ -22,6 +22,8 @@
 	      		<div class="d-flex justify-content-center display-1 bg-info" >
 			          <label><b>Scrap daraz.pk</b></label>	      			
 	      		</div>
+	      		<br>
+	      		<br>
 	      		<!-- <div>
 	      			<label><b>Type of Data</b></label><br>
 		      		<label class="checkbox">
@@ -46,7 +48,6 @@
 		      		</label>
 		      	</div>
 	      		<div>
-	      			
 	      			<button class="btn btn-primary btn-lg">Scrap</button>
 	      		</div>
 	      	</div>

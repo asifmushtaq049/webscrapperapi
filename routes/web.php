@@ -70,7 +70,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::get('verifyEmailFirst','Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
 
-Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone')->middleware('auth');
+Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
   Auth::routes();
@@ -88,16 +88,20 @@ Route::get('/admin/fetch_daraz', function () {
     return view('admin.fetch_daraz');
 });
 
-Route::get('/admin/fetch_alibaba', function () {
-    return view('admin.fetch_alibaba');
-});
+// Route::get('/admin/fetch_alibaba', function () {
+//     return view('admin.fetch_alibaba');
+// });
 
 Route::get('/admin/fetch_ebay', function () {
     return view('admin.fetch_ebay');
 });
 
-Route::get('/admin/delete', function () {
-    return view('admin.delete');
-});
+Route::get('/admin/delete/{uid}', 'FetchDataFromDB@destroy');
+
+Route::get('/admin/change_status/{uid}','FetchDataFromDB@status');
+Route::post('/admin/change_status/{uid}','FetchDataFromDB@statusUpdate');
 
 Route::get('/admin/users','FetchDataFromDB@index');
+
+//Scraping Routes
+Route::get('/admin/fetch_alibaba','WebController@execute');

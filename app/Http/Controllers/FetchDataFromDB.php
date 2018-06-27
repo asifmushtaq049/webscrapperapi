@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Redirect;
 
 class FetchDataFromDB extends Controller
 {
@@ -18,5 +19,32 @@ class FetchDataFromDB extends Controller
     {
 	    $users = User::all();
 	    return view('admin.users', ['users' => $users]);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        if(!$user->isAdmin()){
+            $user->delete();
+            return view('admin.delete' ,['user' => $user]);
+        }
+        else{
+            // return Redirect::back()->withErrors(['msg', 'Admin cannot be deleted']);
+        }
+    }
+
+    public function statusUpdate(Request $request, $id)
+    {
+        $user = User::find($id);
+        if(!$user->isAdmin()){
+         $user->status = $request->status;
+         $user->update();
+         return view('admin.change_status', ['user' => $user]);
+        }
+    }
+    public function status($id)
+    {
+        $user = User::find($id);
+        return view('admin.change_status', ['user' => $user]);
     }
 }

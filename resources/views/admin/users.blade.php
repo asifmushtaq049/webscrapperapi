@@ -5,30 +5,37 @@
         <li class="breadcrumb-item">
           <a href="{{URL::asset('/admin/')}}">Dashboard</a>
         </li>
-        <!-- <li class="breadcrumb-item active">Profile / Edit Profile</li> -->
       </ol>
       <div >
       	<form>
       		<div class="">
-	      		<!-- <div class="col-md-6 "> -->
+	      		
 		          <div>
 		          	<label><b>Change Status</b></label>
 		          </div>
-		          <table>
-		          	<tr>
-		          		<td>NAME</td>
-		          		<td>Email</td>
-		          		<td>Status</td>
-		          	</tr>
-		          	 <!-- </div> -->
-		          	@foreach ($users as $user)
-						<tr>
-			          		<td>{{$user->name}}</td>
-			          		<td>{{$user->email}}</td>
-			          		<td>{{$user->status}}</td>
-			          	</tr>
-					@endforeach
-		          </table>
+		          <div class="  table-hover table-responsive">
+			          <table class="table" >
+			          	<thead class="thead-dark">
+				          	<tr>
+				          		<th>NAME</th>
+				          		<th>Email</th>
+				          		<th>Status</th>
+				          		<th>Delete User</th>
+				          		<th>Change Status</th>
+				          	</tr>
+			          	</thead>
+			          	 
+			          	@foreach ($users as $user)
+							<tr>
+				          		<td>{{$user->name}}</td>
+				          		<td>{{$user->email}}</td>
+				          		<td>{{$user->status}}</td>
+				          		<td><a href="{{URL::asset('/admin/delete')}}/{{$user->id}}">Delete User</a></td>
+			      				<td><a href="{{URL::asset('/admin/change_status')}}/{{$user->id}}">Change Status</a></td>
+				          	</tr>
+						@endforeach
+			          </table>
+			        </div>
 		         
 		        </div>
 		    </div>
