@@ -101,3 +101,5 @@ Route::get('/admin/delete', function () {
 });
 
 Route::get('/admin/users','FetchDataFromDB@index');
+
+Route::post('/dashboard/getapi/data', 'FetchController@getApi');

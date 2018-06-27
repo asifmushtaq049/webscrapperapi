@@ -108,7 +108,7 @@ class RegisterController extends Controller
        if($user)
        {
              User::Where(['email'=>$email,'verifyToken'=>$verifyToken])->update(['status'=>'1','verifyToken'=>NULL]);
-             return redirect('/dashboard');
+             return redirect('/login');
        }
        else{
         return 'User not found'; 
