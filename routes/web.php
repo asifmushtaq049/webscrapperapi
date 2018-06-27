@@ -105,3 +105,6 @@ Route::get('/admin/users','FetchDataFromDB@index');
 
 //Scraping Routes
 Route::get('/admin/fetch_alibaba','WebController@execute');
+Route::get('/admin/users','FetchDataFromDB@index');
+
+Route::post('/dashboard/getapi/data', 'FetchController@getApi');
