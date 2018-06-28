@@ -92,9 +92,9 @@ Route::get('/admin/fetch_daraz', function () {
 //     return view('admin.fetch_alibaba');
 // });
 
-Route::get('/admin/fetch_ebay', function () {
-    return view('admin.fetch_ebay');
-});
+// Route::get('/admin/fetch_ebay', function () {
+//     return view('admin.fetch_ebay');
+// });
 
 Route::get('/admin/delete/{uid}', 'FetchDataFromDB@destroy');
 
@@ -104,7 +104,9 @@ Route::post('/admin/change_status/{uid}','FetchDataFromDB@statusUpdate');
 Route::get('/admin/users','FetchDataFromDB@index');
 
 //Scraping Routes
-Route::get('/admin/fetch_alibaba','WebController@execute');
+Route::get('/admin/fetch_alibaba','AlibabaWebController@execute');
+Route::get('/admin/fetch_ebay','EbayWebController@execute');
+
 Route::get('/admin/users','FetchDataFromDB@index');
 
 Route::post('/dashboard/getapi/data', 'FetchController@getApi');

@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Data;
 
-class WebController extends Controller
+class AlibabaWebController extends Controller
 {
-    
+	protected $all_products;
+	protected $all_categories;
+	protected $data=[];
+
     function execute()
     {
 	    require('simple_html_dom.php');
 		$html = file_get_html('http://www.alibaba.com/Products?spm=a2700.8293689.scGlobalHomeHeader.6.46ce65aaypP5Wz',$offset = 0);
 		ini_set('memory_limit', '-1');	
-		set_time_limit(1000);
+		set_time_limit(3000);
 		$allItems = [];
 		// fetech all categories
 		foreach ($html->find('div.cg-main div.item') as $item) 
@@ -35,17 +39,17 @@ class WebController extends Controller
 		    foreach($row['children'] as $link) 
 		    {
 		    	//echo $link;
-		    	$this->getProducts($link); // get products from that category link
+		    	$this->getProducts($link, json_encode($allItems)); // get products from that category link
 		    }
 		    
 	    }
+	    $website ='http://www.alibaba.com/Products?spm=a2700.8293689.scGlobalHomeHeader.6.46ce65aaypP5Wz';
+		$this->addPDB(json_encode($allItems), json_encode($data), $website);
   	}
 
-
-    function getProducts($link)
+    function getProducts($link, $allItems)
     {
 		$html=file_get_html($link);
-		$data=[];
 		foreach( $html->find(".m-gallery-product-item .item-main") as $products ) 
 		{
 			$product=[];
@@ -59,10 +63,10 @@ class WebController extends Controller
 		    // $product['category']=$category;
 		    // $link = $products->find('a.link',0)->href;
 		    // $product['link']=$link;
-		    $data[]=$product;
+		   $this->data[]=$product;
 		}
-		$output = json_encode($data);
-		// echo $output;
+		$output = json_encode($this->data);
+		echo $output;
 	}
 
 	function getCategories()
@@ -88,8 +92,15 @@ class WebController extends Controller
 	       $items["children"] = $subItems;
 			$allItems[] = $items;
 		}
-	 	echo json_encode($allItems);
+		$cat = json_encode($allItems);
+		echo $cat;
 	}
 
-	
+	public function addPDB($category,$products,$website){
+		$data = new Data;
+		$data->category = json_encode($category);
+		$data->products = json_encode($products);
+		$data->website = json_encode($website);
+		$data->save();
+	}
 }

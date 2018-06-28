@@ -15,9 +15,9 @@ class CreateDataTable extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('category');
-            $table->string('products');
-            $table->string('website');
+            $table->longText('category');
+            $table->longText('products');
+            $table->longText('website');
             $table->timestamps();
         });
     }
