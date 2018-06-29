@@ -29,6 +29,8 @@ class FetchController extends Controller
 			header("Pragma: no-cache"); 
 			header("Expires: 0");
 			echo($output);
+    	}else{
+    		echo $output;
     	}
         else{
             echo($output);
