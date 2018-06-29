@@ -30,5 +30,8 @@ class FetchController extends Controller
 			header("Expires: 0");
 			echo($output);
     	}
+        else{
+            echo($output);
+        }
     }
 }
