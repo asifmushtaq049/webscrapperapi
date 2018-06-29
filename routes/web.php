@@ -84,9 +84,9 @@ Route::get('/admin', function () {
     return view('admin.admin_index');
 })->middleware('is_admin');
 
-Route::get('/admin/fetch_daraz', function () {
-    return view('admin.fetch_daraz');
-});
+// Route::get('/admin/fetch_daraz', function () {
+//     return view('admin.fetch_daraz');
+// });
 
 // Route::get('/admin/fetch_alibaba', function () {
 //     return view('admin.fetch_alibaba');
@@ -104,8 +104,9 @@ Route::post('/admin/change_status/{uid}','FetchDataFromDB@statusUpdate');
 Route::get('/admin/users','FetchDataFromDB@index');
 
 //Scraping Routes
-Route::get('/admin/fetch_alibaba','AlibabaWebController@execute');
-Route::get('/admin/fetch_ebay','EbayWebController@execute');
+Route::get('/admin/fetch_alibaba','WebController@scrapAlibaba');
+Route::get('/admin/fetch_ebay','WebController@scrapEbay');
+Route::get('/admin/fetch_daraz','WebController@scrapDaraz');
 
 Route::get('/admin/users','FetchDataFromDB@index');
 
