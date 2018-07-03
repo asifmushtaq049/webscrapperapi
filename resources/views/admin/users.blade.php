@@ -35,12 +35,10 @@
 				          	</tr>
 						@endforeach
 			          </table>
-			        </div>
-		         
+			        </div>		         
 		        </div>
 		    </div>
         </form>
-      	
       </div> 
 </div>
 @include("admin.admin_footer")

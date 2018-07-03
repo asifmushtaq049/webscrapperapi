@@ -8,7 +8,7 @@
         <li class="breadcrumb-item active">API / Get API</li>
       </ol>
       <div >
-      	<form action="/dashboard/getapi/data" method="POST" target="_blank">
+      	<form action="/dashboard/data" method="POST" target="_blank">
       		<div class="">
       			@csrf
 	      		

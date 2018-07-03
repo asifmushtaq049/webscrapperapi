@@ -6,6 +6,7 @@ use App\Data;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class FetchController extends Controller
 {
@@ -32,8 +33,32 @@ class FetchController extends Controller
     	}else{
     		echo $output;
     	}
-        else{
-            echo($output);
+    }
+
+    public function restful(Request $request)
+    {
+        $web = Input::get('web');
+        $type = Input::get('type');
+        $format = Input::get('format');
+        echo $web.''.$type.''.$format;
+
+        return Redirect::to('/dashboard/data/'.$web.'/'.$type.'/'.$format);
+         // redirect('/dashboard/data/web/type/format'); 
+    }
+    public function fetchdata($web, $type,$format)
+    {
+        
+        $data = Data::where('website', $web)->get()->first();
+        // $filename="download.json";
+        $output = "";
+        if($type == "category"){
+            $output = $data->category;
         }
+        if($type == "products"){
+            $output = $data->products;
+        }
+        
+            echo $output;
+        
     }
 }
