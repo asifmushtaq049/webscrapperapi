@@ -106,9 +106,9 @@
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-globe text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Multiple domains</h3>
-              <p class="text-muted mb-0">You can add multiple domains.Which can access our API!</p>
+              <i class="fa fa-4x fa-download text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Download File</h3>
+              <p class="text-muted mb-0">You can download data file by clicking on download button</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
@@ -141,7 +141,7 @@
                     amazon.com
                   </div> -->
                   <div class="project-name">
-                    amazon.com
+                    ebay.com
                   </div>
                 </div>
               </div>
@@ -156,7 +156,7 @@
                     Category
                   </div> -->
                   <div class="project-name">
-                    dx.com
+                    gsmarena.com
                   </div>
                 </div>
               </div>
@@ -201,7 +201,7 @@
                     Category
                   </div> -->
                   <div class="project-name">
-                    flipkart.com
+                    urdupoint.com
                   </div>
                 </div>
               </div>
@@ -216,7 +216,7 @@
                     Category
                   </div> -->
                   <div class="project-name">
-                    tme.eu
+                    mobile-phone.pk
                   </div>
                 </div>
               </div>

@@ -32,8 +32,5 @@ class FetchController extends Controller
     	}else{
     		echo $output;
     	}
-        else{
-            echo($output);
-        }
     }
 }

@@ -41,7 +41,7 @@
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-cog"></i>
+            <i class="fa fa-fw fa-spin fa-cog"></i>
             <span class="nav-link-text">API</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
