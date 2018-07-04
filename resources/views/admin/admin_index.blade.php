@@ -60,6 +60,7 @@
 
   </div>
 
+<<<<<<< HEAD
   </div>
   <style type="text/css">
 
@@ -73,6 +74,10 @@
   </div>
 
 </div>
+=======
+
+  </div>
+>>>>>>> 4686add12e69715736f210da398802aa51e7edba
 
 </div>
 @include("admin.admin_footer")

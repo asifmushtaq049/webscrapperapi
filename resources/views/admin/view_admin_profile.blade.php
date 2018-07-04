@@ -1,7 +1,6 @@
 @include("admin.admin_header")
 
 <div class="container-fluid">
-      <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="{{URL::asset('/admin/')}}">Dashboard</a>
