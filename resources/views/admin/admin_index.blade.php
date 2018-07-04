@@ -60,24 +60,17 @@
 
   </div>
 
-<<<<<<< HEAD
   </div>
-  <style type="text/css">
 
-  </style>
-   <div class="a">
+
     <div style="padding:20px;">
         <img src ="{{URL::asset('../img/admin.png')}}">
 
         <img src ="{{URL::asset('../img/admin2.jpg')}}">
     </div>
-  </div>
+
 
 </div>
-=======
-
-  </div>
->>>>>>> 4686add12e69715736f210da398802aa51e7edba
 
 </div>
 @include("admin.admin_footer")
