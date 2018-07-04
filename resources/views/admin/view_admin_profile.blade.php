@@ -1,44 +1,43 @@
 @include("admin.admin_header")
+
 <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="{{URL::asset('/admin/')}}">Dashboard</a>
         </li>
+        <li class="breadcrumb-item active">Profile / View Profile</li>
       </ol>
       <div >
       	<form>
       		<div class="">
 
 		          <div>
-		          	<label><b>Change Status</b></label>
+		          	<label><b>My Profile </b></label>
 		          </div>
 		          <div class="  table-hover table-responsive">
-			          <table class="table" >
-			          	<thead class="thead-dark">
+			          <table class="table table-sm table-striped" >
 				          	<tr>
-				          		<th>NAME</th>
-				          		<th>Email</th>
-				          		<th>Status</th>
-				          		<th>Delete User</th>
-				          		<th>Change Status</th>
+				          		<th>ID</th>
+				          		<td>{{$user->id}}</td>
 				          	</tr>
-			          	</thead>
-
-			          	@foreach ($users as $user)
-							<tr>
+				          	<tr>
+				          		<th>Name</th>
 				          		<td>{{$user->name}}</td>
-				          		<td>{{$user->email}}</td>
-				          		<td>{{$user->status}}</td>
-				          		<td><a href="{{URL::asset('/admin/delete')}}/{{$user->id}}">Delete User</a></td>
-			      				<td><a href="{{URL::asset('/admin/change_status')}}/{{$user->id}}">Change Status</a></td>
 				          	</tr>
-						@endforeach
+				          	<tr>
+				          		<th>Email</th>
+				          		<td>{{$user->email}}</td>
+				          	</tr>
+				          	<tr>
+				          		<th>Status</th>
+				          		<td>{{$user->status}}</td>
+				          	</tr>
 			          </table>
 			        </div>
 		        </div>
-		    </div>
         </form>
       </div>
 </div>
+
 @include("admin.admin_footer")

@@ -117,6 +117,11 @@ Route::post('/admin/change_status/{uid}','FetchDataFromDB@statusUpdate')->middle
 
 Route::get('/admin/users','FetchDataFromDB@index')->middleware('is_admin');
 
+Route::get('/admin/provided_websites', function () {
+    return view('admin.provided_websites');
+})->middleware('is_admin');
+Route::get('/admin/view_admin_profile','FetchDataFromDB@viewAdminProfile')->middleware('is_admin');
+
 //Scraping Routes
 Route::get('/admin/fetch_alibaba','WebController@scrapAlibaba')->middleware('is_admin');
 Route::get('/admin/fetch_ebay','WebController@scrapEbay')->middleware('is_admin');

@@ -61,7 +61,7 @@ class WebController extends Controller
 	    }
 
 	    $website ='www.daraz.pk';
-		$this->insert(json_encode($all_categories), $products, $website);
+		// $this->insert(json_encode($all_categories), $products, $website);
  	}
 
 
@@ -144,7 +144,7 @@ class WebController extends Controller
   			}
   	    }
   	    $website ='www.alibaba.com';
-  		$this->insert(json_encode($all_categories), $products, $website);
+  		// $this->insert(json_encode($all_categories), $products, $website);
   	}
 
     function getAlibabaProducts($link, $allItems)
@@ -221,7 +221,7 @@ class WebController extends Controller
 			}
 	    }
 	    $website ='www.ebay.com';
-		$this->insert(json_encode($all_categories), $products, $website);
+		// $this->insert(json_encode($all_categories), $products, $website);
   	}
 
 
@@ -304,7 +304,7 @@ class WebController extends Controller
 			}
 	    }
 	    $website ='www.gsmarena.com';
-		$this->insert(json_encode($all_categories), $products, $website);
+		// $this->insert(json_encode($all_categories), $products, $website);
 	}
 
     // function to get products
@@ -378,7 +378,7 @@ class WebController extends Controller
 			}
 	    }
 	    $website ='www.mobile-phone.com';
-		$this->insert(json_encode($all_categories), $products, $website);
+		// $this->insert(json_encode($all_categories), $products, $website);
 	}
 
 	function getMobilephoneProducts($link)
@@ -456,7 +456,7 @@ class WebController extends Controller
 			}
 	    }
 	    $website ='www.urdupoint.com';
-		$this->insert(json_encode($all_categories), $products, $website);
+		// $this->insert(json_encode($all_categories), $products, $website);
 	}
 
     // function to get products

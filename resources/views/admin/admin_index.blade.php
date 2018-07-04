@@ -17,7 +17,7 @@
           </div>
           <div class="mr-5 h5">My Profile</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/dashboa/viewprofile')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/admin/view_admin_profile')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fa fa-angle-right"></i>
@@ -31,9 +31,9 @@
           <div class="card-body-icon">
             <i class="fa fa-fw fa-cog fa-spin"></i>
           </div>
-          <div class="mr-5 h5">Websites we Provide</div>
+          <div class="mr-5 h5">Our Services</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/admin/Provided_websites')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/admin/provided_websites')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fa fa-angle-right"></i>
@@ -45,11 +45,11 @@
       <div class="card text-white bg-warning o-hidden h-100">
         <div class="card-body">
           <div class="card-body-icon">
-            <i class="fa fa-fw fa-book"></i>
+            <i class="fa fa-user-plus"></i>
           </div>
-          <div class="mr-5 h5">User Guide</div>
+          <div class="mr-5 h5">All Users</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/dashboard/usermanual')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/admin/users')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fa fa-angle-right"></i>
