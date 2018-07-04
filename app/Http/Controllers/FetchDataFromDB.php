@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Redirect;
+use Auth;
 
 class FetchDataFromDB extends Controller
 {
@@ -47,4 +48,12 @@ class FetchDataFromDB extends Controller
         $user = User::find($id);
         return view('admin.change_status', ['user' => $user]);
     }
+
+   public function viewProfile()
+   {
+        $user=Auth::user();
+        return view ('dashboard.viewprofile', ['user' => $user]);
+    }
+
+
 }

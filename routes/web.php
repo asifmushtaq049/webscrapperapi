@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+// Route::get('/dashboard', function () {
+//     return view('dashboard.index');
+// })->middleware('auth');
 
 Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm');
 
@@ -34,32 +34,38 @@ Route::post('/dashboard/password/email', 'Auth\ResetPasswordController@sendReset
 Route::post('/dashboard/password/reset', 'Auth\ResetPasswordController@reset');
 
 
-Route::get('/dashboard/alldomains', function(){
-    return view('dashboard.alldomains');
-})->middleware('auth');
+// Route::get('/dashboard/alldomains', function(){
+//     return view('dashboard.alldomains');
+// })->middleware('auth');
 
-Route::get('/dashboard/adddomain', function () {
-    return view('dashboard.adddomain');
-})->middleware('auth');
+// Route::get('/dashboard/adddomain', function () {
+//     return view('dashboard.adddomain');
+// })->middleware('auth');
 
 Route::get('/dashboard/docs', function () {
     return view('dashboard.docs');
 })->middleware('auth');
 
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+    Route::get('/dashboard/usermanual', function () {
+        return view('dashboard.usermanual');
+    })->middleware('auth');
+});
+
 Route::get('/dashboard/usermanual', function () {
     return view('dashboard.usermanual');
 })->middleware('auth');
 
-Route::get('/dashboard/getapi', function () {
-    return view('dashboard.getapi');
-})->middleware('auth');
-Route::get('/dashboard/viewprofile', function () {
-    return view('dashboard.viewprofile');
-})->middleware('auth');
+// Route::get('/dashboard/getapi', function () {
+//     return view('dashboard.getapi');
+// })->middleware('auth');
 
-Route::get('/dashboard/editprofile', function () {
-    return view('dashboard.editprofile');
-})->middleware('auth');
+ Route::get('/dashboard/viewprofile','FetchDataFromDB@viewProfile');
+
+// Route::get('/dashboard/editprofile', function () {
+//     return view('dashboard.editprofile');
+// })->middleware('auth');
 
 Route::post('/login-verification', 'loginController@login')->middleware('auth');
 Route::post('/register-verification', 'registerController@store');
@@ -74,15 +80,23 @@ Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
   Auth::routes();
-Route::get('/dashboard', function () {
+    Route::get('/dashboard', function () {
         return view('dashboard.index');
     })->middleware('auth');
 });
 
+
 //      Admin Routes
-Route::get('/admin', function () {
-    return view('admin.admin_index');
-})->middleware('is_admin');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+    Route::get('/admin', function () {
+        return view('admin.admin_index');
+    })->middleware('is_admin');
+});
+
+// Route::get('/admin', function () {
+//     return view('admin.admin_index');
+// })->middleware('is_admin');
 
 // Route::get('/admin/fetch_daraz', function () {
 //     return view('admin.fetch_daraz');
@@ -96,18 +110,24 @@ Route::get('/admin', function () {
 //     return view('admin.fetch_ebay');
 // });
 
-Route::get('/admin/delete/{uid}', 'FetchDataFromDB@destroy');
+Route::get('/admin/delete/{uid}', 'FetchDataFromDB@destroy')->middleware('is_admin');
 
-Route::get('/admin/change_status/{uid}','FetchDataFromDB@status');
-Route::post('/admin/change_status/{uid}','FetchDataFromDB@statusUpdate');
+Route::get('/admin/change_status/{uid}','FetchDataFromDB@status')->middleware('is_admin');
+Route::post('/admin/change_status/{uid}','FetchDataFromDB@statusUpdate')->middleware('is_admin');
 
-Route::get('/admin/users','FetchDataFromDB@index');
+Route::get('/admin/users','FetchDataFromDB@index')->middleware('is_admin');
 
 //Scraping Routes
-Route::get('/admin/fetch_alibaba','WebController@scrapAlibaba');
-Route::get('/admin/fetch_ebay','WebController@scrapEbay');
-Route::get('/admin/fetch_daraz','WebController@scrapDaraz');
+Route::get('/admin/fetch_alibaba','WebController@scrapAlibaba')->middleware('is_admin');
+Route::get('/admin/fetch_ebay','WebController@scrapEbay')->middleware('is_admin');
+Route::get('/admin/fetch_daraz','WebController@scrapDaraz')->middleware('is_admin');
+Route::get('/admin/fetch_gsmarena','WebController@scrapGsmarena')->middleware('is_admin');
+Route::get('/admin/fetch_mobilephone','WebController@scrapMobilephone')->middleware('is_admin');
+Route::get('/admin/fetch_urdupoint','WebController@scrapUrdupoint')->middleware('is_admin');
 
-Route::get('/admin/users','FetchDataFromDB@index');
+Route::get('/admin/users','FetchDataFromDB@index')->middleware('is_admin');
 
-Route::post('/dashboard/getapi/data', 'FetchController@getApi');
+Route::post('/dashboard/getapi/data', 'FetchController@getApi')->middleware('auth');
+Route::get('/dashboard/data/{d}/{t}/{f}', 'FetchController@fetchdata');
+Route::post('/dashboard/data', 'FetchController@restful');
+Route::get('/dashboard/getapi','FetchController@getWebsite');

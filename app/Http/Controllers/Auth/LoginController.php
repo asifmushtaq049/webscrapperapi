@@ -56,8 +56,9 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request) {
-      Auth::logout();
-      return redirect('/login');
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        return redirect('/login');
     }
 
     /**

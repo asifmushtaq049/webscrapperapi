@@ -10,32 +10,33 @@
       </ol>
       <div >
       	<form>
-      		<div class="row">
-	      		<div class="col-md-6 ">
-		          <div  class="form-group">
-		          	<label for="fname1"><b>First Name*</b></label>
-		          	<input readonly type="text" id="fname1" name="fname" placeholder="" class="form-control">
+      		<div class="">
+	      		
+		          <div>
+		          	<label><b>My Profile </b></label>
 		          </div>
-		          <div class="form-group">
-		          	<label for="lname1"><b>last Name*</b></label>
-		          	<input readonly type="text" id="lname1" name="lname" placeholder="" class="form-control">
-		          </div>
-		          <div class="form-group">
-		          	<label for="email1"><b>Email*</b></label>
-		          	<input readonly type="email" id="email1" name="email" placeholder="" class="form-control">
-		          </div>
-		          <div class="form-group">
-		          	<label for="password1"><b>Password*</b></label>
-		          	<input readonly type="password" id="password1" name="password" placeholder="" class="form-control">
-		          </div>
-		          <!-- <div class="form-group">
-		          	<label for="cpassword1">Confirm Password*</label>
-		          	<input type="password" id="cpassword1" name="cpassword" placeholder="" class="form-control">
-		          </div> -->
+		          <div class="  table-hover table-responsive">
+			          <table class="table table-sm table-striped" >
+				          	<tr>
+				          		<th>ID</th>
+				          		<td>{{$user->id}}</td>
+				          	</tr>
+				          	<tr>
+				          		<th>Name</th>
+				          		<td>{{$user->name}}</td>
+				          	</tr>
+				          	<tr>
+				          		<th>Email</th>
+				          		<td>{{$user->email}}</td>
+				          	</tr>
+				          	<tr>
+				          		<th>Status</th>
+				          		<td>{{$user->status}}</td>
+				          	</tr>
+			          </table>
+			        </div>
 		        </div>
-		    </div>
-        </form>
-      	
+        </form>      	
       </div> 
 </div>
 
