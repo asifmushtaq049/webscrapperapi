@@ -11,7 +11,6 @@
       <div >
       	<form>
       		<div class="">
-
 		          <div>
 		          	<label><b>My Profile </b></label>
 		          </div>
