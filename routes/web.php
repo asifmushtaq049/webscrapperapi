@@ -127,7 +127,6 @@ Route::get('/admin/fetch_urdupoint','WebController@scrapUrdupoint')->middleware(
 
 Route::get('/admin/users','FetchDataFromDB@index')->middleware('is_admin');
 
-Route::post('/dashboard/getapi/data', 'FetchController@getApi')->middleware('auth');
-Route::get('/dashboard/data/{d}/{t}/{f}', 'FetchController@fetchdata');
+Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata');
 Route::post('/dashboard/data', 'FetchController@restful');
 Route::get('/dashboard/getapi','FetchController@getWebsite');
