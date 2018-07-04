@@ -17,7 +17,7 @@
           </div>
           <div class="mr-5 h5">My Profile</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/dashboard/viewprofile')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/dashboa/viewprofile')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fa fa-angle-right"></i>
@@ -31,9 +31,9 @@
           <div class="card-body-icon">
             <i class="fa fa-fw fa-cog fa-spin"></i>
           </div>
-          <div class="mr-5 h5">Get API</div>
+          <div class="mr-5 h5">Websites we Provide</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/dashboard/getapi')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{URL::asset('/admin/Provided_websites')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fa fa-angle-right"></i>
