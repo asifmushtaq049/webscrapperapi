@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 class FetchController extends Controller
 {
@@ -40,16 +41,14 @@ class FetchController extends Controller
         $web = Input::get('web');
         $type = Input::get('type');
         $format = Input::get('format');
-        echo $web.''.$type.''.$format;
+        // echo $web.''.$type.''.$format;
 
         return Redirect::to('/dashboard/data/'.$web.'/'.$type.'/'.$format);
-         // redirect('/dashboard/data/web/type/format'); 
     }
     public function fetchdata($web, $type,$format)
     {
         
         $data = Data::where('website', $web)->get()->first();
-        // $filename="download.json";
         $output = "";
         if($type == "category"){
             $output = $data->category;
@@ -57,8 +56,12 @@ class FetchController extends Controller
         if($type == "products"){
             $output = $data->products;
         }
-        
             echo $output;
-        
+    }
+
+    public function getWebsite(Request $request)
+    {
+        $data = DB::table('data')->distinct()->get(['website']);
+        return view ('dashboard.getapi', ['data' => $data]);
     }
 }

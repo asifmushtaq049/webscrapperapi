@@ -7,15 +7,8 @@ use App\Data;
 
 class WebController extends Controller
  {
-//     protected $data=[];
 
-// 	protected $all_products=[];
-// 	protected $all_categories=[];
-	
-// 	protected $sub_categories=[];
-// 	protected $sub_products=[];
-
- 	function scrapDaraz()
+ 	public function scrapDaraz()
  	{
 	 	require('simple_html_dom.php');
 		$html = file_get_html('https://www.daraz.pk/');
@@ -233,7 +226,8 @@ class WebController extends Controller
 
 
     // function to get products
-	function getEbayProducts($link){
+	function getEbayProducts($link)
+	{
 		$html=file_get_html($link);
 		$data=[];
 		foreach( $html->find("li.s-item") as $products ) 
@@ -254,6 +248,242 @@ class WebController extends Controller
 		return $output;
 	}
 
+	public function scrapGsmarena()
+	{
+		require('simple_html_dom.php');
+		$html = file_get_html('https://www.gsmarena.com/');
+		ini_set('memory_limit', '-1');
+		set_time_limit(3000);	
+		// fetech all categories
+		foreach ($html->find('#body .sidebar .brandmenu-v2 ul li a') as $item) 
+	  	{
+		    // $value = "https://www.gsmarena.com/".$item->innertext;
+		    $value = $item->innertext;
+		    $cat_items["category"]=$value;
+	      	$prod_items["category"]=$value;
+	      	$sub_products=[];
+	      	$sub_categories=[];
+
+		    // $newhtml=file_get_html($value);
+		    foreach ($item->find('#body .main .nav-pages a') as $subItem) 
+		    {
+		      	$sub_products[] = $subItem->href;
+	       		$sub_categories[] = $subItem->innertext;
+		    }
+		    
+		    $cat_items["children"]=$sub_categories;
+	       	$prod_items["children"]=$sub_products;
+
+	       	$all_categories[]=$cat_items;
+	       	$all_products[]=$prod_items;
+		}
+		//show categories
+		echo json_encode($all_categories);
+		
+	    $upper_loop=0;
+		$count=0;
+		$products="";
+	    foreach($all_products as $row) 
+		{
+			if($upper_loop==2){
+				break;
+			}
+			else{
+				foreach($row['children'] as $link) 
+		    	{
+			    	if($count==5){
+			    		break;
+			    	}
+			    	else{
+				    	$products.= $this->getGsmarenaProducts($link); // get products from that category link
+				    	$count++;
+			    	}
+		    	}
+		    	$upper_loop++;
+			}
+	    }
+	    $website ='www.gsmarena.com';
+		$this->insert(json_encode($all_categories), $products, $website);
+	}
+
+    // function to get products
+	function getGsmarenaProducts($link){
+		$html=file_get_html($link);
+		$data=[];
+		foreach( $html->find(".main .makers ul li a") as $products ) 
+		{
+			$product=[];
+		    $title=$products->find('strong',0)->plaintext;
+		    $product['title']=$title;
+		    $image=$products->find('img',0)->{'src'};
+		    $product['image']=$image;
+		   
+		    $data[]=$product;
+		    
+			
+		}
+		$output = json_encode($data);
+		echo $output;
+		return $output;
+	}
+
+	public function scrapMobilephone()
+	{
+		require('simple_html_dom.php');
+	  	$html = file_get_html('http://www.mobile-phone.pk/');
+		ini_set('memory_limit', '-1');
+		set_time_limit(3000);
+
+		  // fetech all categories
+		foreach ($html->find('#main-contents #right-container-temp2 .table') as $item) 
+		{ 
+		   	$value = $item->find('.table_tittle',0)->plaintext;
+		   	$cat_items["category"]=$value;
+	      	$prod_items["category"]=$value;
+	      	$sub_products=[];
+	      	$sub_categories=[];
+
+		   foreach($item->find(".table_contents a") as $subItem)
+		   {
+		    	$sub_products[] = $subItem->href;
+	       		$sub_categories[] = $subItem->plaintext;
+		   }
+		   $cat_items["children"]=$sub_categories;
+	       $prod_items["children"]=$sub_products;
+
+	       $all_categories[]=$cat_items;
+	       $all_products[]=$prod_items;
+		}
+		//show categories
+		echo json_encode($all_categories);
+		
+	    $upper_loop=0;
+		$count=0;
+		$products="";
+	    foreach($all_products as $row) 
+		{
+			if($upper_loop==2){
+				break;
+			}
+			else{
+				foreach($row['children'] as $link) 
+		    	{
+			    	if($count==5){
+			    		break;
+			    	}
+			    	else{
+				    	$products.= $this->getMobilephoneProducts($link); // get products from that category link
+				    	$count++;
+			    	}
+		    	}
+		    	$upper_loop++;
+			}
+	    }
+	    $website ='www.mobile-phone.com';
+		$this->insert(json_encode($all_categories), $products, $website);
+	}
+
+	function getMobilephoneProducts($link)
+	{
+		$html=file_get_html($link);
+		$data=[];
+		foreach( $html->find(".center_mobs .home_page_blocks") as $products ) 
+		{
+			$product=[];
+		    $title=$products->find('a .block_link',0)->plaintext;
+		    $product['title']=$title;
+		    // $price=$products->find('a+span',0)->innertext;
+		    // $product['price']=$price;
+		    $image=$products->find('a img',0)->{'src'};
+		    $product['image']=$image;
+		    
+		    $data[]=$product;  			
+		}
+		$output = json_encode($data);
+		echo $output;
+		return $output;
+	}
+
+	public function scrapUrdupoint()
+	{
+		require('simple_html_dom.php');
+		$html = file_get_html('https://www.urdupoint.com/mobile/');
+		ini_set('memory_limit', '-1');
+		set_time_limit(3000);
+
+		// fetech all categories
+		foreach ($html->find('.nav--main .hassub') as $item) 
+		{
+		    
+			$value = $item->find('a',0)->plaintext;
+		   	$cat_items["category"]=$value;
+	      	$prod_items["category"]=$value;
+	      	$sub_products=[];
+	      	$sub_categories=[];
+		    foreach($item->find("ul li a") as $subItem)
+		    {
+		     	$sub_products[] = $subItem->href;
+	       		$sub_categories[] = $subItem->plaintext;
+		    }
+
+			$cat_items["children"]=$sub_categories;
+		    $prod_items["children"]=$sub_products;
+
+		    $all_categories[]=$cat_items;
+		    $all_products[]=$prod_items;
+		}
+		//show categories
+		echo json_encode($all_categories);
+		
+	    $upper_loop=0;
+		$count=0;
+		$products="";
+	    foreach($all_products as $row) 
+		{
+			if($upper_loop==2){
+				break;
+			}
+			else{
+				foreach($row['children'] as $link) 
+		    	{
+			    	if($count==5){
+			    		break;
+			    	}
+			    	else{
+				    	$products.= $this->getUrdupointProducts($link); // get products from that category link
+				    	$count++;
+			    	}
+		    	}
+		    	$upper_loop++;
+			}
+	    }
+	    $website ='www.urdupoint.com';
+		$this->insert(json_encode($all_categories), $products, $website);
+	}
+		
+    // function to get products
+	function getUrdupointProducts($link){
+		$html=file_get_html($link);
+		$data=[];
+		foreach( $html->find(".main_bar .name_list_box ul a") as $products ) 
+		{
+			$product=[];
+		    $title=$products->find('p',0)->plaintext;
+		    $product['Title']=$title;
+		    $price=$products->find('p.txt_green',0)->innertext;
+		    $product['Price']=$price;
+		    $image=$products->find('span img',0)->{'src'};
+		    $product['Image']=$image;
+		    
+		    
+		    $data[]=$product;
+		    
+			
+		}
+		$output = json_encode($data);
+		echo $output;
+		return $output;
+	}
 
 	public function insert($category,$products,$website){
 		$data = new Data;

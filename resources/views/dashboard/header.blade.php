@@ -1,8 +1,3 @@
-<!-- @if(!Session::has('email'))
-  <script type="text/javascript">
-      window.location = "/dashboard/login";//here double curly bracket
-  </script>
-@endif -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,9 +66,6 @@
             <span class="nav-link-text">Docs</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <!-- <li>
-              <a href="{{URL::asset('/dashboard/getapi')}}">Get API</a>
-            </li> -->
             <li>
               <a href="{{URL::asset('/dashboard/usermanual')}}">User Manual</a>
             </li>
@@ -92,7 +84,6 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -100,5 +91,7 @@
       </ul>
     </div>
   </nav>
-  
   <div class="content-wrapper">
+  </div>
+</body>
+</html>

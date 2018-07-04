@@ -51,9 +51,6 @@ class FetchDataFromDB extends Controller
 
    public function viewProfile()
    {
-        // $users = User::all();
-        // return view('dashboard.viewprofile', ['users' => $users]);
-        // $user = User::find($id);
         $user=Auth::user();
         return view ('dashboard.viewprofile', ['user' => $user]);
     }

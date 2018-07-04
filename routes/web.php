@@ -34,13 +34,13 @@ Route::post('/dashboard/password/email', 'Auth\ResetPasswordController@sendReset
 Route::post('/dashboard/password/reset', 'Auth\ResetPasswordController@reset');
 
 
-Route::get('/dashboard/alldomains', function(){
-    return view('dashboard.alldomains');
-})->middleware('auth');
+// Route::get('/dashboard/alldomains', function(){
+//     return view('dashboard.alldomains');
+// })->middleware('auth');
 
-Route::get('/dashboard/adddomain', function () {
-    return view('dashboard.adddomain');
-})->middleware('auth');
+// Route::get('/dashboard/adddomain', function () {
+//     return view('dashboard.adddomain');
+// })->middleware('auth');
 
 Route::get('/dashboard/docs', function () {
     return view('dashboard.docs');
@@ -53,18 +53,19 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     })->middleware('auth');
 });
 
-// Route::get('/dashboard/usermanual', function () {
-//     return view('dashboard.usermanual');
+Route::get('/dashboard/usermanual', function () {
+    return view('dashboard.usermanual');
+})->middleware('auth');
+
+// Route::get('/dashboard/getapi', function () {
+//     return view('dashboard.getapi');
 // })->middleware('auth');
 
-Route::get('/dashboard/getapi', function () {
-    return view('dashboard.getapi');
-})->middleware('auth');
  Route::get('/dashboard/viewprofile','FetchDataFromDB@viewProfile');
 
-Route::get('/dashboard/editprofile', function () {
-    return view('dashboard.editprofile');
-})->middleware('auth');
+// Route::get('/dashboard/editprofile', function () {
+//     return view('dashboard.editprofile');
+// })->middleware('auth');
 
 Route::post('/login-verification', 'loginController@login')->middleware('auth');
 Route::post('/register-verification', 'registerController@store');
@@ -120,9 +121,13 @@ Route::get('/admin/users','FetchDataFromDB@index')->middleware('is_admin');
 Route::get('/admin/fetch_alibaba','WebController@scrapAlibaba')->middleware('is_admin');
 Route::get('/admin/fetch_ebay','WebController@scrapEbay')->middleware('is_admin');
 Route::get('/admin/fetch_daraz','WebController@scrapDaraz')->middleware('is_admin');
+Route::get('/admin/fetch_gsmarena','WebController@scrapGsmarena')->middleware('is_admin');
+Route::get('/admin/fetch_mobilephone','WebController@scrapMobilephone')->middleware('is_admin');
+Route::get('/admin/fetch_urdupoint','WebController@scrapUrdupoint')->middleware('is_admin');
 
 Route::get('/admin/users','FetchDataFromDB@index')->middleware('is_admin');
 
 Route::post('/dashboard/getapi/data', 'FetchController@getApi')->middleware('auth');
 Route::get('/dashboard/data/{d}/{t}/{f}', 'FetchController@fetchdata');
 Route::post('/dashboard/data', 'FetchController@restful');
+Route::get('/dashboard/getapi','FetchController@getWebsite');

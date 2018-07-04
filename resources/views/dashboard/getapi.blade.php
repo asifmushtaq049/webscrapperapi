@@ -16,11 +16,9 @@
 	      			<label for="website1"><h4>Target Website</h4></label>
 	      			<select class="form-control col-md-4" name="web" id="website1" required>
 	      				<option value="">Select Website</option>
-	      				<option>www.amazon.com</option>
-	      				<option>www.ebay.com</option>
-	      				<option>www.alibaba.com</option>
-	      				
-
+	      				@foreach($data as $d)
+		      				<option>{{$d->website}}</option>
+		      			@endforeach
 	      			</select>
 	      		</div>
 	      		<div>

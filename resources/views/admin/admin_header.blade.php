@@ -49,6 +49,15 @@
             <li>
               <a href="{{URL::asset('/admin/fetch_ebay')}}">Scrap ebay.com</a>
             </li>
+            <li>
+              <a href="{{URL::asset('/admin/fetch_gsmarena')}}">Scrap gsmarena.com</a>
+            </li>
+            <li>
+              <a href="{{URL::asset('/admin/fetch_mobilephone')}}">Scrap Mobilephone.com</a>
+            </li>
+            <li>
+              <a href="{{URL::asset('/admin/fetch_urdupoint')}}">Scrap urduPoint.com</a>
+            </li>
 
             
           </ul>
