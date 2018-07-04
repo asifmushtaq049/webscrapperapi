@@ -65,9 +65,6 @@
             <li>
               <a href="{{URL::asset('/dashboard/usermanual')}}">User Manual</a>
             </li>
-            <li>
-              <a href="{{URL::asset('/dashboard/docs')}}">Documentation</a>
-            </li>
           </ul>
         </li>
 

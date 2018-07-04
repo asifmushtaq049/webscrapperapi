@@ -29,7 +29,7 @@
           <div class="card text-white bg-success o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-cog fa-spin"></i>
+                <i class="fa fa-fw fa-cog"></i>
               </div>
               <div class="mr-5 h5">Get API</div>
             </div>
@@ -60,26 +60,10 @@
 
       </div>
       <!-- Area Chart Example-->
-      <style type="text/css">
-        img {
-                height: 650px;
-                background-position: center;
-                background-size: cover;
-               }
-      </style>
-       <div id="banner">
-    <div class="inline-block">
-        <img src ="{{URL::asset('../img/one.jpg')}}">
-    </div>
+      <div style="padding-left:50px;">
+          <img src ="{{URL::asset('../img/one.png')}}">
 
-    <div class="inline-block">
-        <img src ="{{URL::asset('../img/two.png')}}">
-    </div>
-
-    <div class="inline-block">
-        <img src ="{{URL::asset('../img/three.png')}}">
-    </div>
-</div>
+      </div>
 
     </div>
     @include("dashboard.footer")

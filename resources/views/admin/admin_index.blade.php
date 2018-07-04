@@ -29,7 +29,7 @@
       <div class="card text-white bg-success o-hidden h-100">
         <div class="card-body">
           <div class="card-body-icon">
-            <i class="fa fa-fw fa-cog fa-spin"></i>
+            <i class="fa fa-fw fa-cog"></i>
           </div>
           <div class="mr-5 h5">Our Services</div>
         </div>
@@ -59,9 +59,20 @@
     </div>
 
   </div>
-  
 
-  </div> -->
+  </div>
+  <style type="text/css">
+
+  </style>
+   <div class="a">
+    <div style="padding:20px;">
+        <img src ="{{URL::asset('../img/admin.png')}}">
+
+        <img src ="{{URL::asset('../img/admin2.jpg')}}">
+    </div>
+  </div>
+
+</div>
 
 </div>
 @include("admin.admin_footer")
