@@ -33,7 +33,7 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-cog"></i>
@@ -43,10 +43,6 @@
             <li>
               <a href="{{URL::asset('/dashboard/getapi')}}">Get Api</a>
             </li>
-            <!-- <li>
-              <a href="{{URL::asset('/dashboard/adddomain')}}">Add Domain</a>
-            </li> -->
-            
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profile">
@@ -57,7 +53,7 @@
           <ul class="sidenav-second-level collapse" id="collapseMulti">
             <li>
               <a href="{{URL::asset('/dashboard/viewprofile')}}">View Profile</a>
-            </li>            
+            </li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="API">
@@ -74,7 +70,7 @@
             </li>
           </ul>
         </li>
-        
+
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -92,6 +88,3 @@
     </div>
   </nav>
   <div class="content-wrapper">
-  </div>
-</body>
-</html>
