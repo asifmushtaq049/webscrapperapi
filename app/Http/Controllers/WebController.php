@@ -254,6 +254,8 @@ class WebController extends Controller
 		$html = file_get_html('https://www.gsmarena.com/');
 		ini_set('memory_limit', '-1');
 		set_time_limit(3000);
+    $sub_products=[];
+    $sub_categories=[];
 		// fetech all categories
 		foreach ($html->find('#body .sidebar .brandmenu-v2 ul li a') as $item)
 	  	{
@@ -261,8 +263,7 @@ class WebController extends Controller
 		    $value = $item->innertext;
 		    $cat_items["category"]=$value;
 	      	$prod_items["category"]=$value;
-	      	$sub_products=[];
-	      	$sub_categories=[];
+
 
 		    // $newhtml=file_get_html($value);
 		    foreach ($item->find('#body .main .nav-pages a') as $subItem)
@@ -271,7 +272,7 @@ class WebController extends Controller
 	       		$sub_categories[] = $subItem->innertext;
 		    }
 
-		    $cat_items["children"]=$sub_categories;
+		      $cat_items["children"]=$sub_categories;
 	       	$prod_items["children"]=$sub_products;
 
 	       	$all_categories[]=$cat_items;
@@ -313,7 +314,7 @@ class WebController extends Controller
 		foreach( $html->find(".main .makers ul li a") as $products )
 		{
 			$product=[];
-		    $title=$products->find('strong',0)->plaintext;
+		    $title=$products->find('strong',0)->innertext;
 		    $product['title']=$title;
 		    $image=$products->find('img',0)->{'src'};
 		    $product['image']=$image;

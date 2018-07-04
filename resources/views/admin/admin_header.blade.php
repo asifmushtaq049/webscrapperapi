@@ -33,7 +33,7 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-cog"></i>
@@ -41,25 +41,25 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages" target="_blank">
             <li>
-              <a href="{{URL::asset('/admin/fetch_daraz')}}">Scrap daraz.pk</a>
+              <a target="_blank" href="{{URL::asset('/admin/fetch_daraz')}}">Scrap daraz.pk</a>
             </li>
             <li>
-              <a href="{{URL::asset('/admin/fetch_alibaba')}}">Scrap alibaba.com</a>
+              <a target="_blank" href="{{URL::asset('/admin/fetch_alibaba')}}">Scrap alibaba.com</a>
             </li>
             <li>
-              <a href="{{URL::asset('/admin/fetch_ebay')}}">Scrap ebay.com</a>
+              <a target="_blank" href="{{URL::asset('/admin/fetch_ebay')}}">Scrap ebay.com</a>
             </li>
             <li>
-              <a href="{{URL::asset('/admin/fetch_gsmarena')}}">Scrap gsmarena.com</a>
+              <a target="_blank" href="{{URL::asset('/admin/fetch_gsmarena')}}">Scrap gsmarena.com</a>
             </li>
             <li>
-              <a href="{{URL::asset('/admin/fetch_mobilephone')}}">Scrap Mobilephone.com</a>
+              <a target="_blank" href="{{URL::asset('/admin/fetch_mobilephone')}}">Scrap Mobilephone.com</a>
             </li>
             <li>
-              <a href="{{URL::asset('/admin/fetch_urdupoint')}}">Scrap urduPoint.com</a>
+              <a target="_blank" href="{{URL::asset('/admin/fetch_urdupoint')}}">Scrap urduPoint.com</a>
             </li>
 
-            
+
           </ul>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="user profile">
               <a class="nav-link" href="{{URL::asset('/admin/users')}}">
@@ -69,10 +69,10 @@
             </li>
         </li>
       </ul>
-      </div>  
+      </div>
       </ul>
       <ul class="navbar-nav ml-auto">
-        
+
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -80,5 +80,5 @@
       </ul>
     </div>
   </nav>
-  
+
   <div class="content-wrapper">
