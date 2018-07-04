@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Redirect;
 use Auth;
 
-class FetchDataFromDB extends Controller
+class UserController extends Controller
 {
     /**
      * Show a list of all of the application's users.

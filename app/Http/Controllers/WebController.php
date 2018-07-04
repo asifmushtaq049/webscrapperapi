@@ -250,71 +250,38 @@ class WebController extends Controller
 
 	public function scrapGsmarena()
 	{
-		require('simple_html_dom.php');
-		$html = file_get_html('https://www.gsmarena.com/');
-		ini_set('memory_limit', '-1');
-		set_time_limit(3000);
-    $sub_products=[];
-    $sub_categories=[];
-		// fetech all categories
-		foreach ($html->find('#body .sidebar .brandmenu-v2 ul li a') as $item)
-	  	{
-		    // $value = "https://www.gsmarena.com/".$item->innertext;
-		    $value = $item->innertext;
-		    $cat_items["category"]=$value;
-	      	$prod_items["category"]=$value;
+    require('simple_html_dom.php');
+	$html = file_get_html('https://www.gsmarena.com/');
+	ini_set('memory_limit', '-1');
+	$allItems = [];
+	// fetech all categories
+	foreach ($html->find('#body .sidebar .brandmenu-v2 ul li a') as $item)
+   {
 
+    $items = [];
+    $subitem="https://www.gsmarena.com/".$item->href;
+    $items[]=$subitem;
+    $allItems[] = $items;
 
-		    // $newhtml=file_get_html($value);
-		    foreach ($item->find('#body .main .nav-pages a') as $subItem)
-		    {
-		      	$sub_products[] = $subItem->href;
-	       		$sub_categories[] = $subItem->innertext;
-		    }
-
-		      $cat_items["children"]=$sub_categories;
-	       	$prod_items["children"]=$sub_products;
-
-	       	$all_categories[]=$cat_items;
-	       	$all_products[]=$prod_items;
-		}
-		//show categories
-		echo json_encode($all_categories);
-
-	    $upper_loop=0;
-		$count=0;
-		$products="";
-	    foreach($all_products as $row)
-		{
-			if($upper_loop==2){
-				break;
-			}
-			else{
-				foreach($row['children'] as $link)
-		    	{
-			    	if($count==5){
-			    		break;
-			    	}
-			    	else{
-				    	$products.= $this->getGsmarenaProducts($link); // get products from that category link
-				    	$count++;
-			    	}
-		    	}
-		    	$upper_loop++;
-			}
-	    }
-	    $website ='www.gsmarena.com';
-		// $this->insert(json_encode($all_categories), $products, $website);
 	}
-
+  // $this->getCategories();
+	foreach($allItems as $row)
+	{
+	    foreach($row as $link)
+	    {
+	    	$this->getGsmarenaProducts($link); // get products from that category link
+	    }
+    }
+  }
     // function to get products
 	function getGsmarenaProducts($link){
+		//echo $link;
 		$html=file_get_html($link);
 		$data=[];
 		foreach( $html->find(".main .makers ul li a") as $products )
 		{
 			$product=[];
-		    $title=$products->find('strong',0)->innertext;
+		    $title=$products->find('strong',0)->plaintext;
 		    $product['title']=$title;
 		    $image=$products->find('img',0)->{'src'};
 		    $product['image']=$image;
@@ -322,7 +289,6 @@ class WebController extends Controller
 		}
 		$output = json_encode($data);
 		echo $output;
-		return $output;
 	}
 
 	public function scrapMobilephone()
