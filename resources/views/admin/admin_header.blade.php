@@ -52,11 +52,12 @@
             <li>
               <a target="_blank" href="{{URL::asset('/admin/fetch_gsmarena')}}">Scrap gsmarena.com</a>
             </li>
-            <li>
-              <a target="_blank" href="{{URL::asset('/admin/fetch_mobilephone')}}">Scrap Mobilephone.com</a>
-            </li>
+
             <li>
               <a target="_blank" href="{{URL::asset('/admin/fetch_urdupoint')}}">Scrap urduPoint.com</a>
+            </li>
+            <li>
+              <a target="_blank" href="{{URL::asset('/admin/fetch_mobilephone')}}">Scrap mobile-phone.pk</a>
             </li>
 
 
@@ -64,7 +65,7 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="user profile">
               <a class="nav-link" href="{{URL::asset('/admin/users')}}">
                 <i class="fa fa-fw fa-user"></i>
-                <span class="nav-link-text">User Profle</span>
+                <span class="nav-link-text">Users Profile</span>
               </a>
             </li>
         </li>
