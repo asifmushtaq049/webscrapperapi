@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm');
 
-Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth');
 
 Route::post('/dashboard/login', 'Auth\LoginController@login');
 
@@ -28,27 +29,26 @@ Route::post('/dashboard/register', 'Auth\RegisterController@register');
         // Password Reset Routes...
 Route::get('/dashboard/password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm')->middleware('auth');
 Route::post('/dashboard/password/email', 'Auth\ResetPasswordController@sendResetLinkEmail')->middleware('auth');
-Route::post('/dashboard/password/reset', 'Auth\ResetPasswordController@reset');
-
-Route::get('/dashboard/docs', function () {
-    return view('dashboard.docs');
-})->middleware('auth');
+Route::post('/dashboard/password/reset', 'Auth\ResetPasswordController@reset')->middleware('auth');
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
   Auth::routes();
-    Route::get('/dashboard/usermanual', function () {
-        return view('dashboard.usermanual');
-    })->middleware('auth');
+  Route::get('/dashboard/docs', function () {
+      return view('dashboard.docs');
+  })->middleware('auth');
 });
 
-Route::get('/dashboard/usermanual', function () {
-    return view('dashboard.usermanual');
-})->middleware('auth');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/dashboard/usermanual', function () {
+      return view('dashboard.usermanual');
+  })->middleware('auth');
+});
 
- Route::get('/dashboard/viewprofile','UserController@viewProfile')->middleware('auth');
-
-Route::post('/login-verification', 'loginController@login')->middleware('auth');
-Route::post('/register-verification', 'registerController@store');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+    Route::get('/dashboard/viewprofile','UserController@viewProfile')->middleware('auth');
+});
 
 Auth::routes();
 
@@ -65,7 +65,6 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     })->middleware('auth');
 });
 
-
 //      Admin Routes
 Route::group(['middleware' => 'prevent-back-history'],function(){
   Auth::routes();
@@ -74,28 +73,86 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     })->middleware('is_admin');
 });
 
-Route::get('/admin/delete/{uid}', 'UserController@destroy')->middleware('is_admin');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+    Route::get('/admin/delete/{uid}', 'UserController@destroy')->middleware('is_admin');
+});
 
-Route::get('/admin/change_status/{uid}','UserController@status')->middleware('is_admin');
-Route::post('/admin/change_status/{uid}','UserController@statusUpdate')->middleware('is_admin');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/change_status/{uid}','UserController@status')->middleware('is_admin');
+});
 
-Route::get('/admin/users','UserController@index')->middleware('is_admin');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::post('/admin/change_status/{uid}','UserController@statusUpdate')->middleware('is_admin');
+});
 
-Route::get('/admin/provided_websites', function () {
-    return view('admin.provided_websites');
-})->middleware('is_admin');
-Route::get('/admin/view_admin_profile','UserController@viewAdminProfile')->middleware('is_admin');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/users','UserController@index')->middleware('is_admin');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/provided_websites', function () {
+      return view('admin.provided_websites');
+  })->middleware('is_admin');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/view_admin_profile','UserController@viewAdminProfile')->middleware('is_admin');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/users','UserController@index')->middleware('is_admin');
+});
 
 //Scraping Routes
-Route::get('/admin/fetch_alibaba','WebController@scrapAlibaba')->middleware('is_admin');
-Route::get('/admin/fetch_ebay','WebController@scrapEbay')->middleware('is_admin');
-Route::get('/admin/fetch_daraz','WebController@scrapDaraz')->middleware('is_admin');
-Route::get('/admin/fetch_gsmarena','WebController@scrapGsmarena')->middleware('is_admin');
-Route::get('/admin/fetch_mobilephone','WebController@scrapMobilephone')->middleware('is_admin');
-Route::get('/admin/fetch_urdupoint','WebController@scrapUrdupoint')->middleware('is_admin');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/fetch_alibaba','WebController@scrapAlibaba')->middleware('is_admin');
+});
 
-Route::get('/admin/users','UserController@index')->middleware('is_admin');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/fetch_ebay','WebController@scrapEbay')->middleware('is_admin');
+});
 
-Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata')->middleware('auth');
-Route::post('/dashboard/data', 'FetchController@restful')->middleware('auth');
-Route::get('/dashboard/getapi','FetchController@getWebsite')->middleware('auth');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/fetch_daraz','WebController@scrapDaraz')->middleware('is_admin');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/fetch_gsmarena','WebController@scrapGsmarena')->middleware('is_admin');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/fetch_mobilephone','WebController@scrapMobilephone')->middleware('is_admin');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/admin/fetch_urdupoint','WebController@scrapUrdupoint')->middleware('is_admin');
+});
+
+//getApi
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata')->middleware('auth');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::post('/dashboard/data', 'FetchController@restful')->middleware('auth');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  Auth::routes();
+  Route::get('/dashboard/getapi','FetchController@getWebsite')->middleware('auth');
+});

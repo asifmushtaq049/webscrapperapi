@@ -11,7 +11,7 @@
       		<div class="">
 
 		          <div>
-		          	<label><b>Change Status</b></label>
+		          	<label><b>All Users</b></label>
 		          </div>
 		          <div class="  table-hover table-responsive">
 			          <table class="table" >

@@ -11,7 +11,7 @@
       <div >
       	<form>
       		<div class="">
-	      		
+
 		          <div>
 		          	<label><b>My Profile </b></label>
 		          </div>
@@ -33,11 +33,15 @@
 				          		<th>Status</th>
 				          		<td>{{$user->status}}</td>
 				          	</tr>
+                    tr>
+				          		<th>Type</th>
+				          		<td>{{$user->type}}</td>
+				          	</tr>
 			          </table>
 			        </div>
 		        </div>
-        </form>      	
-      </div> 
+        </form>
+      </div>
 </div>
 
 @include("dashboard.footer")

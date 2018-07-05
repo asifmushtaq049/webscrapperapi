@@ -31,6 +31,10 @@
 				          		<th>Status</th>
 				          		<td>{{$user->status}}</td>
 				          	</tr>
+                    <tr>
+				          		<th>Type</th>
+				          		<td>{{$user->type}}</td>
+				          	</tr>
 			          </table>
 			        </div>
 		        </div>
