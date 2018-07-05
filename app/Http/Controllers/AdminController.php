@@ -11,4 +11,8 @@ class AdminController extends Controller
     {
         return view('admin');
     }
+    public function showLoginForm()
+    {
+        return view('/admin.login');
+    }
 }

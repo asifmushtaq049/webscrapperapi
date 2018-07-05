@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm');
+Route::get('/admin/login', 'AdminController@showLoginForm');
 
 Route::get('/loginasadmin', 'Auth\LoginAsAdminController@showLoginForm');
 //Route::get('/dashboard/login', 'Auth\LoginAsAdminController@showLoginForm');
