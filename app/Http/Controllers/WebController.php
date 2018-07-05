@@ -132,7 +132,7 @@ class WebController extends Controller
   			else{
   				foreach($row['children'] as $link)
   		    	{
-  			    	if($count==5){
+  			    	if($count==4){
   			    		break;
   			    	}
   			    	else{
@@ -150,6 +150,7 @@ class WebController extends Controller
     function getAlibabaProducts($link, $allItems)
     {
 		$html=file_get_html($link);
+    $data=[];
 		foreach( $html->find(".m-gallery-product-item .item-main") as $products )
 		{
 			$product=[];
@@ -157,9 +158,9 @@ class WebController extends Controller
 		    $product['title']=$title;
 		    $image=$products->find('.item-img a>img',0)->{'src'};
 		    $product['image']=$image;
-		   $this->data[]=$product;
+		   $data[]=$product;
 		}
-		$output = json_encode($this->data);
+		$output = json_encode($data);
 		echo $output;
 		return $output;
 	}
@@ -169,8 +170,8 @@ class WebController extends Controller
 	    require('simple_html_dom.php');
 		$html = file_get_html('https://www.ebay.com/v/allcategories');
 		ini_set('memory_limit', '-1');
-		set_time_limit(3000);
 		// fetech all categories
+    set_time_limit(3000);
 		foreach ($html->find('.all-categories .category-section') as $item)
 		{
 	       $value = $item->find('.left-section a>h2.ttl', 0)->innertext;
@@ -209,7 +210,7 @@ class WebController extends Controller
 			else{
 				foreach($row['children'] as $link)
 		    	{
-			    	if($count==5){
+			    	if($count==4){
 			    		break;
 			    	}
 			    	else{
@@ -253,6 +254,7 @@ class WebController extends Controller
     require('simple_html_dom.php');
 	$html = file_get_html('https://www.gsmarena.com/');
 	ini_set('memory_limit', '-1');
+  set_time_limit(3000);
 	$allItems = [];
 	// fetech all categories
 	foreach ($html->find('#body .sidebar .brandmenu-v2 ul li a') as $item)
@@ -332,7 +334,7 @@ class WebController extends Controller
 			else{
 				foreach($row['children'] as $link)
 		    	{
-			    	if($count==5){
+			    	if($count==4){
 			    		break;
 			    	}
 			    	else{
