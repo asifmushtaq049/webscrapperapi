@@ -30,7 +30,6 @@
 				          		<td>{{$user->email}}</td>
 				          	</tr>
 				          	<tr>
-                      
 				          		<th>Status</th>
 				          		<td>{{$user->status}}</td>
 				          	</tr>
