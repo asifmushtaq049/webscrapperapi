@@ -245,13 +245,11 @@
         <div class="row">
           <div class="col-lg-4 ml-auto text-center">
             <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p>0092-3333353471</p>
+            <p><b>0092-3333353471</b></p>
           </div>
           <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
-            <p>
-              <a href="mailto:your-email@your-domain.com">webscraperapi@gmail.com</a>
-            </p>
+            <p> <b>web.scraper3@gmail.com </b></p>
           </div>
         </div>
       </div>
