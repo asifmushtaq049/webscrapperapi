@@ -17,9 +17,13 @@ Route::get('/', function () {
 
 Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm');
 
+Route::get('/loginasadmin', 'Auth\LoginAsAdminController@showLoginForm');
+//Route::get('/dashboard/login', 'Auth\LoginAsAdminController@showLoginForm');
+
 Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth');
 
 Route::post('/dashboard/login', 'Auth\LoginController@login');
+Route::post('/loginasadmin', 'Auth\LoginAsAdminController@login');
 
         // Registration Routes...
 Route::get('/dashboard/register', 'Auth\RegisterController@showRegistrationForm');
