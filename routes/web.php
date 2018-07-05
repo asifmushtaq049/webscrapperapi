@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm');
 
-
 Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth');
 
 Route::post('/dashboard/login', 'Auth\LoginController@login');
@@ -86,11 +85,6 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 Route::group(['middleware' => 'prevent-back-history'],function(){
   Auth::routes();
   Route::post('/admin/change_status/{uid}','UserController@statusUpdate')->middleware('is_admin');
-});
-
-Route::group(['middleware' => 'prevent-back-history'],function(){
-  Auth::routes();
-  Route::get('/admin/users','UserController@index')->middleware('is_admin');
 });
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
