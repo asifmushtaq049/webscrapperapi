@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm');
+Route::get('/admin/login', 'AdminController@showLoginForm');
 
 Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth');
 
