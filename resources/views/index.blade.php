@@ -51,9 +51,7 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('/dashboard/login')}}">Login</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('/dashboard/loginasadmin')}}">Login as Admin</a>
-            </li>
+        
 
           </ul>
         </div>
