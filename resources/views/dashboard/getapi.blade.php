@@ -24,15 +24,11 @@
 	      		<div>
 	      			<label><h4>Type of Data</h4></label><br>
 		      		<label class="checkbox">
-		      			<input type="radio" name="type" value="category" required="required"checked>
+		      			<input type="radio" name="type" value="category" required="required">
 		      			<b>Category</b>
 		      		</label>
               <br>
-              <label class="checkbox">
-		      			<input type="radio" name="type" value="Other" required="required">
-		      			<b>Other</b>
-		      		</label>
-		      		<br>
+            
 		      		<label class="checkbox">
 		      			<input type="radio" name="type" value="products" required="required">
 		      			<b>Products</b>
