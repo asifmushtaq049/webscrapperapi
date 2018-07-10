@@ -75,11 +75,11 @@ class WebController extends Controller
 		    // $title=$products->find('h2 > span.name',0)->innertext;
 		    // $product['Title']=$title;
 		    $brand=$products->find('h2 > span.brand',0)->innertext;
-		    $product['Brand']=$brand;
+		    $product['title']=$brand;
 		    $price=$products->find('span.price',0)->plaintext;
-		    $product['Price']=$price;
+		    $product['price']=$price;
 		    $image=$products->find('img[class=lazy]',0)->{'data-src'};
-		    $product['Image']=$image;
+		    $product['image']=$image;
 
 		    $data[]=$product;
 
@@ -235,13 +235,13 @@ class WebController extends Controller
 		{
 			$product=[];
 		    $title=$products->find('a .s-item__title',0)->plaintext;
-		    $product['Title']=$title;
+		    $product['title']=$title;
 
 		    $image=$products->find('.s-item__image-img',0)->{'src'};
-		    $product['Image']=$image;
+		    $product['image']=$image;
 
 		    $price=$products->find('.s-item__details .s-item__detail span.s-item__price',0)->innertext;
-		     $product['Price']=$price;
+		     $product['price']=$price;
 		    $data[]=$product;
 		}
 		$output = json_encode($data);
@@ -358,8 +358,6 @@ class WebController extends Controller
 			$product=[];
 		    $title=$products->find('a .block_link',0)->plaintext;
 		    $product['title']=$title;
-		    // $price=$products->find('a+span',0)->innertext;
-		    // $product['price']=$price;
 		    $image=$products->find('a img',0)->{'src'};
 		    $product['image']=$image;
 
@@ -435,11 +433,11 @@ class WebController extends Controller
 		{
 			$product=[];
 		    $title=$products->find('p',0)->plaintext;
-		    $product['Title']=$title;
+		    $product['title']=$title;
 		    $price=$products->find('p.txt_green',0)->innertext;
-		    $product['Price']=$price;
+		    $product['price']=$price;
 		    $image=$products->find('span img',0)->{'src'};
-		    $product['Image']=$image;
+		    $product['image']=$image;
 
 
 		    $data[]=$product;

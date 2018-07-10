@@ -141,10 +141,11 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 });
 
 //getApi
-Route::group(['middleware' => 'prevent-back-history'],function(){
-  Auth::routes();
-  Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata')->middleware('auth');
-});
+// Route::group(['middleware' => 'prevent-back-history'],function(){
+//   Auth::routes();
+//   Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata')->middleware('auth');
+// });
+Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata');
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
   Auth::routes();
