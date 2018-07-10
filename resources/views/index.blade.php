@@ -46,11 +46,13 @@
               <a class="nav-link js-scroll-trigger" href="#">Docs<b class="caret"></b></a> -->
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{url('/dashboard/login')}}">Login</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{url('/dashboard/register')}}">Register</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{url('/dashboard/login')}}">Login</a>
+            </li>
+        
+
           </ul>
         </div>
       </div>

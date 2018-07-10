@@ -18,9 +18,13 @@ Route::get('/', function () {
 Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm');
 Route::get('/admin/login', 'AdminController@showLoginForm');
 
+Route::get('/loginasadmin', 'Auth\LoginAsAdminController@showLoginForm');
+//Route::get('/dashboard/login', 'Auth\LoginAsAdminController@showLoginForm');
+
 Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth');
 
 Route::post('/dashboard/login', 'Auth\LoginController@login');
+Route::post('/loginasadmin', 'Auth\LoginAsAdminController@login');
 
         // Registration Routes...
 Route::get('/dashboard/register', 'Auth\RegisterController@showRegistrationForm');
@@ -137,10 +141,11 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 });
 
 //getApi
-Route::group(['middleware' => 'prevent-back-history'],function(){
-  Auth::routes();
-  Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata')->middleware('auth');
-});
+// Route::group(['middleware' => 'prevent-back-history'],function(){
+//   Auth::routes();
+//   Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata')->middleware('auth');
+// });
+Route::get('/dashboard/data/{d}/{t}/{f}/{a}', 'FetchController@fetchdata');
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
   Auth::routes();
